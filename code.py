@@ -1,7 +1,7 @@
 import sly
 from sly import Lexer
 
-class BasicLexer(Lexer): 
+class Lexer(Lexer): 
 	tokens = { NAME, NUMBER, STRING } 
 	ignore = '\t '
 	literals = { '=', '+', '-', '/', 
@@ -32,9 +32,9 @@ class BasicLexer(Lexer):
 	def newline(self, t): 
 		self.lineno = t.value.count('\n')
 
-class BasicParser(Parser): 
+class Parser(Parser): 
 	#tokens are passed from lexer to parser 
-	tokens = BasicLexer.tokens 
+	tokens = Lexer.tokens 
 
 	precedence = ( 
 		('left', '+', '-'), 
